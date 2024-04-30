@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific calculator</title>
+    <link rel="stylesheet" href="./project.css">
+</head>
+<style>
+    body {
+      body {
+    background-color: rgba(30, 33, 33, 0.551);
+    margin-left: 580px;
+    margin-top: 100px;
+    background-image: url("https://in.images.search.yahoo.com/search/images;_ylt=AwrPqGk_Hx1m4WwVnh.7HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3BpdnM-?p=blank+background+hd&fr2=piv-web&type=E210IN826G0&fr=mcafee#id=1&iurl=http%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F10%2FBlank-Desktop-Background.jpg&action=click");
+}
+
+    }
+  
+    .cal-container {
+    background-color: black;
+    width: 300px;
+    height: 520px;
+    text-align: center;
+    border: 5px solid black;
+    border-radius: 10px;
+    /* Updated margin properties to center the calculator */
+    margin: 100px auto; /* top and bottom margin 100px, left and right margin auto */
+    border-right: 10px solid black;
+    border-bottom: 10px solid black;
+}
+
+
+.clock {
+  position: relative;
+  top: 15px;
+  height: 40px;
+  width: 110px;
+  border-radius: 4px;
+  left: 170px;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+#time {
+  color: black;
+  position: relative;
+  background-color: rgba(239, 219, 219, 0.896);
+  width: 100px;
+  height: 25px;
+  top: 3px;
+  left: 3px;
+  padding: 6px;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+.display {
+  background-color: rgb(153, 43, 120);
+  height: 45px;
+  position: relative;
+  display: inline-block;
+  top: 30px;
+  width: 265px;
+  border-radius: 5px;
+}
+#screen {
+  position: relative;
+  height: 33px;
+  top: 2.5px;
+  width: 253px;
+  background-color: #c8d5a9;
+  text-align: right;
+  font-size: 1.5em;
+}
+
+.keys {
+  position: relative;
+  top: 40px;
+}
+.btn {
+  color: rgb(0, 0, 0);
+  background: rgb(96, 142, 199);
+  cursor: pointer;
+  width: 40px;
+  margin: 2px 2px 2px 4px;
+  font-size: 0.9em;
+  text-align: center;
+  border: none;
+  border-top: 2px solid transparent;
+  padding: 3px;
+}
+
+.btn-sign {
+  background: #901c1c;
+  color: white;
+  border-radius: 12px;
+  border-top: 2px solid #413c3c;
+  border-bottom: 2px solid #000;
+}
+
+.btn-sign:active {
+  border-bottom: 2px solid #3096b8;
+  border-top: 2px solid #8d9e1e;
+}
+
+.btn-num {
+  background-color: #000;
+  color: #83ad22;
+  font-size: 1.1em;
+  border-radius: 6px;
+  border-bottom: 2px solid #3b3737;
+  border-top: 2px solid black;
+}
+
+.btn-num:active {
+  border-top: 2px solid #3b3737;
+  border-bottom: 2px solid black;
+}
+
+.btn-red {
+  background-color: rgb(139, 147, 147);
+  padding: 4px;
+  color: black;
+  font-size: 1.1em;
+  border-radius: 4px;
+  border-bottom: 2px solid black;
+  border-top: 2px solid red;
+  font-weight: 600;
+}
+.btn-red:active {
+  border-top: 2px solid black;
+  border-bottom: 2px solid red;
+}
+.btn-opera {
+  background-color: #111;
+  color: #fff;
+  padding: 4px;
+  font-size: 1.1em;
+  border-radius: 5px;
+  border-bottom: 3px solid #111;
+  border-top: 3px solid #000;
+}
+
+.btn-opera:active {
+  border-top: 2px solid #111;
+  border-bottom: 2px solid #000;
+}
+</style>
+<body onload="startTime()">
+    <div class="cal-container">
+
+        <!-- clock -->
+        <div class="clock">
+            <p id = "time">time goes here</p>
+        </div>
+        <!-- screen -->
+        <div class ="display">
+            <input type = "text" id ="screen" readonly placeholder="0">
+        </div>
+        <!-- calculator buttons -->
+        <div class="keys">
+            <p>
+            <input type="button" value ="sin" class="btn btn-sign"onclick="sine()">
+            <input type="button" value ="cos" class="btn btn-sign" onclick="cosine()">
+            <input type="button" value ="tan" class="btn btn-sign" onclick="tan()">
+            <input type="button" value ="asin" class="btn btn-sign" onclick="invsine()">
+            <input type="button" value ="acos" class="btn btn-sign" onclick ="invcosine()">
+            </p>
+            <p>
+                <input type="button" value ="atan" class="btn btn-sign" onclick="invtan()">
+                <input type="button" value ="π" class="btn btn-sign" onclick="press(22/7)">
+                <input type="button" value ="ln" class="btn btn-sign" onclick="ln()">
+                <input type="button" value ="log" class="btn btn-sign" onclick="log()">
+                <input type="button" value ="%" class="btn btn-sign" onclick ="percent()">
+            </p>
+            <p>
+                <input type="button" value ="sqd" class="btn btn-sign"onclick="square()" >
+                <input type="button" value ="cube" class="btn btn-sign" onclick="cube()">
+                <input type="button" value ="&#8730" class="btn btn-sign" onclick="sqrt()">
+                <input type="button" value ="(" class="btn btn-sign" onclick="press('(')">
+                <input type="button" value =")" class="btn btn-sign" onclick="press(')')">
+            </p>  
+            <p style = "margin-top: 30px;">
+                <input type="button" value ="7" class="btn btn-num" onclick = "press(7)">
+                <input type="button" value ="8" class="btn btn-num" onclick = "press(8)">
+                <input type="button" value ="9" class="btn btn-num" onclick="press(9)">
+                <input type="button" value ="Del" class="btn btn-red" onclick="backSpace()">
+                <input type="button" value ="C" class="btn btn-red" onclick ="clearScreen('')">
+            </p> 
+            <p>
+                <input type="button" value ="4" class="btn btn-num" onclick="press(4)">
+                <input type="button" value ="5" class="btn btn-num" onclick = "press(5)">
+                <input type="button" value ="6" class="btn btn-num" onclick = "press(6)">
+                <input type="button" value ="x" class="btn btn-opera"onclick = "press('*')">
+                <input type="button" value ="/" class="btn btn-opera"onclick = "press('/')">
+            </p>   
+            <p>
+                <input type="button" value ="1" class="btn btn-num" onclick="press(1)">
+                <input type="button" value ="2" class="btn btn-num" onclick="press(2)">
+                <input type="button" value ="3" class="btn btn-num" onclick="press(3)">
+                <input type="button" value ="+" class="btn btn-opera"onclick = "press('+')">
+                <input type="button" value ="-" class="btn btn-opera"onclick = "press('-')">
+            </p>
+            <p>
+                <input type="button" value ="0" class="btn btn-num" onclick="press(0)">
+                <input type="button" value ="±" class="btn btn-opera" onclick ="plusMinus()">
+                <input type="button" value ="." class="btn btn-num" onclick="press('.')">
+                <input type="button" value ="Exp" class="btn btn-opera" onclick = "Exp()">
+                <input type="button" value ="=" class="btn btn-opera" onclick="calculate()">
+            </p>          
+         </div>
+
+    </div>
+  
+
+ <script>
+    function startTime() {
+  var today = new Date();
+  var hour = today.getHours();
+  var minutes = today.getMinutes();
+  var seconds = today.getSeconds();
+
+  //time format
+  if (hour <= 12) {
+    hour = hour;
+  } else {
+    hour = hour - 12;
+  }
+
+  //add zero if less than 10
+  hour = concatZero(hour);
+  minutes = concatZero(minutes);
+  seconds = concatZero(seconds);
+
+ 
+
+  document.getElementById('time').innerText =
+    hour + ':' + minutes + ':' + seconds ;
+  setTimeout(startTime, 0);
+}
+
+function concatZero(value) {
+  if (value < 10) {
+    value = '0' + value;
+  }
+  return value;
+}
+
+//screen;
+let screen = document.getElementById('screen');
+
+// type to display screen;
+function press(numValue) {
+  // if (screen.value == 0) {
+  //   screen.value = '';
+  // }
+  screen.value += numValue;
+}
+
+//clear screen
+
+function clearScreen(val) {
+  screen.value = val;
+}
+
+// delete key;
+function backSpace() {
+  const space = screen;
+  screen.value = space.value.substring(0, space.value.length - 1); // substring(strtidx, endidx)
+}
+
+// calculation function;
+function calculate(){
+  if(screen.value != ''){
+  try{
+    clearScreen(eval(screen.value))
+  }catch{
+    clearScreen("bad expression")
+  }
+}
+}
+
+// function to calculate the sine, cosine, and tan
+function sine(){
+  screen.value = Math.sin(screen.value * Math.PI / 180 ) // math.pi convert angle to degree.
+}
+
+function cosine (){
+  screen.value = Math.cos(screen.value * Math.PI / 180)
+}
+
+function tan(){
+  screen.value = Math.tan(screen.value * Math.PI / 180)
+}
+
+// function to calculate the asin, acos, and atan
+function invsine (){
+  screen.value = Math.asin(screen.value) * (180/Math.PI )
+}
+
+function invcosine (){
+  screen.value = Math.acos(screen.value) * (180/ Math.PI)
+}
+
+function invtan() {
+  screen.value = Math.atan(screen.value) * (180 / Math.PI);
+}
+
+// function to calculate the natural logarithm
+function ln(){
+  screen.value = Math.log(screen.value)
+}
+
+function log(){
+  screen.value = Math.log10(screen.value)
+} 
+
+// function for percentage
+function percent (){
+  screen.value = (screen.value / 100)
+}
+
+// function for square, cube and square root
+function square(){
+  screen.value = Math.pow(screen.value, 2)
+}  
+
+function cube(){
+  screen.value = Math.pow(screen.value,3)
+}
+
+function sqrt(){
+  screen.value = Math.sqrt(screen.value)
+}
+
+// function for +/- (plusMinus)
+function plusMinus (){
+  var x = screen;
+  var y = x.value;
+  y = y * -1;
+  x.value = y;
+}
+
+// Exp
+function Exp(){
+  screen.value = Math.pow(10, screen.value)
+}
+ </script>
+</body>
+</html>
